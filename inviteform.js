@@ -1,8 +1,8 @@
 'use strict'
 
 //Variables to change in your deployment
-const deploymentId = '171a5200-a8e9-4fe6-8289-966ae6be547d' //Your WebMessenger DeploymentId
-const hexColor = '#000000' //Color theme
+//const deploymentId = '171a5200-a8e9-4fe6-8289-966ae6be547d' //Your WebMessenger DeploymentId
+//const hexColor = '#000000' //Color theme
 
 function toggleMessenger() {
   Genesys(
