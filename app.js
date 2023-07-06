@@ -228,6 +228,7 @@ new Vue({
                 const customerParticipant = getCustomerParticipant(conv);
                 const name = await getCustomerName(customerParticipant);
                 conv.customer = buildConversationCustomer(customerParticipant, name);
+                conv.case = '12345678';
                 return conv;
             } catch(err){
                 console.log(`Failed to get conversation/customer: ${err}`);
