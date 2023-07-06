@@ -10,7 +10,7 @@ function authenticate(client, pcEnvironment, state) {
     const pcOAuthClientIds = {'mypurecloud.jp': '07f4524b-8339-4e23-b597-74938a96627e'};
     const clientId = pcOAuthClientIds[platformEnvironment];
     if (!clientId) {
-        const defaultErr = platformEnvironment + ': Unknown/Unsupported Genesys Cloud Environment';
+        const defaultErr = platformEnvironment + ':'+ clientId + ': Unknown/Unsupported Genesys Cloud Environment';
         const localErr = `
             The host app is running locally and the target platform client environment was mapped to '${platformEnvironment}'.
             Ensure that you have an oauth client specified for this environment.
