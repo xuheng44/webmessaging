@@ -102,9 +102,10 @@
                                 <a @click="viewInteraction(conv.id)">
                                     {{conv.customer.name}}
                                 </a>
-                                   case number: {{conv.participants.attributes.case}}
                             </h5>
                         </button>
+                        <p>
+                         case number: {{conv.participants.attributes.case}}
                         <p class="card-text mb-2 text-muted">
                             Start: {{moment(conv.startTime).format('MMM Do YYYY, h:mm:ss A')}}
                         </p>
