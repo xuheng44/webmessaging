@@ -1,13 +1,13 @@
 // Authenticate with Genesys Cloud
 function authenticate(client, pcEnvironment, state) {
     // Allow targeting a different environment when host app is running locally
-    const platformEnvironment = pcEnvironment === 'localhost' ? 'mypurecloud.com' : pcEnvironment;
+    const platformEnvironment = pcEnvironment === 'localhost' ? 'mypurecloud.jp' : pcEnvironment;
     /*
     * Note: To use this app in your own org, you will need to create your own OAuth2 Client(s)
     * in your Genesys Cloud org.  After creating the Implicit grant client, map the client id(s) to
     * the specified region key(s) in the object below, deploy the page, and configure an app to point to that URL.
     */
-    const pcOAuthClientIds = {'mypurecloud.com': '07f4524b-8339-4e23-b597-74938a96627e'};
+    const pcOAuthClientIds = {'mypurecloud.jp': '07f4524b-8339-4e23-b597-74938a96627e'};
     const clientId = pcOAuthClientIds[platformEnvironment];
     if (!clientId) {
         const defaultErr = platformEnvironment + ': Unknown/Unsupported Genesys Cloud Environment';
