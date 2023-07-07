@@ -111,6 +111,7 @@
                         <p v-if="conv.endTime" class="card-text mb-2 text-muted">
                             End: &nbsp {{moment(conv.endTime).format('MMM Do YYYY, h:mm:ss A')}}
                         </p>
+                        <p> Case:  {{conv.participants[0].attributes.case}} </p>
                         <div class="dropdown dropright">
                             <button v-if="convEvalMap.has(conv.id)"
                                     class="view-evaluations btn btn-secondary dropdown-toggle"
