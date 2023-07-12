@@ -100,7 +100,7 @@
                         <button class="btn btn-link">
                             <h5>
                                 <a @click="viewInteraction(conv.id)">
-                                    {{conv.customer.name}}
+                                   {{conv.participants[0].attributes.name}}
                                 </a>
                             </h5>
                         </button>
@@ -136,6 +136,7 @@
     </script>
 
     <!-- template for the conversations component -->
+    <!--  Hidden this by sky
     <script type="text/x-template" id="tester-template">
         <section class="manual-tester">
             <form @submit.prevent="getConversationOrEvaluation">
@@ -164,7 +165,8 @@
             </form>
         </section>
     </script>
-
+     End hidden by sky-->
+    
     <!-- app -->
     <div id="app">
         <!-- authenticating placeholder-->
