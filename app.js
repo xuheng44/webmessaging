@@ -136,6 +136,7 @@ new Vue({
             email: "ron@swanson.com",
             department: "Parks and Rec"
         },
+        conversationId: null,
         conversationsData: {
             conversations: [],
             convEvalMap: new Map()
@@ -153,6 +154,7 @@ new Vue({
 
     beforeMount() {
         const queryParameters = getQueryParameters();
+        const conversationId = queryParameters.conversationId;
         const state = computeState(queryParameters);
         let pcEnvironment = queryParameters.pcEnvironment;
 
@@ -266,7 +268,12 @@ new Vue({
             const conversations = {};
             await Promise.allSettled(
                 // Gets all active conversations
-                conversationsData.entities.filter(conv => !(conv.id in evalConversations))
+                conversationsData.entities.filter(conv => {
+                  if (!(conv.id in evalConversations) && (conv.id == conversationId)) {
+                    return conv
+                  }
+                })
+                //conversationsData.entities.filter(conv => !(conv.id in evalConversations))
                     .map(async conv => {
                         const newConv = await getConversationData(conv.id);
                         conversations[conv.id] = {
