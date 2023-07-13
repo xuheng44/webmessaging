@@ -63,7 +63,8 @@ function getQueryParameters() {
     const result = {
       gcHostOrigin: null,
       gcTargetEnv: null,
-      pcEnvironment: null
+      pcEnvironment: null,
+      conversationId: null
     };
     if (window.location.hash && window.location.hash.indexOf('access_token') >= 0) {
       let oauthParams = extractParams(window.location.hash.substring(1));
@@ -86,6 +87,9 @@ function getQueryParameters() {
     if (!result.pcEnvironment) {
       result.pcEnvironment = queryParams.pcEnvironment;
     }
+    if (!result.conversationId) {
+      result.conversationId = queryParams.conversationId;
+    }    
     return result;
 }
 
