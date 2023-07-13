@@ -40,6 +40,7 @@
     </script>
 
     <!-- template for the profile component -->
+    <!-- Hidden Profile by Sky
     <script type="text/x-template" id="profile-template">
         <section class="user-profile">
             <div @click="profileLinkListener" class="profile-link">
@@ -55,7 +56,7 @@
             </div>
         </section>
     </script>
-
+    hidden end -->
     <!-- template for the conversations component -->
     <script type="text/x-template" id="conversations-template">
         <section class="conversation-list">
@@ -111,7 +112,19 @@
                         <p v-if="conv.endTime" class="card-text mb-2 text-muted">
                             End: &nbsp {{moment(conv.endTime).format('MMM Do YYYY, h:mm:ss A')}}
                         </p>
-                        <p> Case:  {{conv.participants[0].attributes.case}} </p>
+                        <p> FirsName:  {{conv.participants[0].attributes.FirstName}} </p>
+                        <p> LastName:  {{conv.participants[0].attributes.LastName}} </p>
+                        <p> PhoneNumber:  {{conv.participants[0].attributes.PhoneNumber}} </p>
+                        <p> Country:  {{conv.participants[0].attributes.Country}} </p>
+                        <p> Language:  {{conv.participants[0].attributes.Language}} </p>
+                        <p> EmailAddress:  {{conv.participants[0].attributes.EmailAddress}} </p>
+                        <p> ProblemCategory1:  {{conv.participants[0].attributes.ProblemCategory1}} </p>
+                        <p> ProblemCategory2:  {{conv.participants[0].attributes.ProblemCategory2}} </p>
+                        <p> SerialNumber:  {{conv.participants[0].attributes.SerialNumber}} </p>
+                        <p> Device:  {{conv.participants[0].attributes.Device}} </p>
+                        <p> DeviceOwner:  {{conv.participants[0].attributes.DeviceOwner}} </p>
+                        <p> DeviceOwnerNumber:  {{conv.participants[0].attributes.DeviceOwnerNumber}} </p>
+                   
                         <div class="dropdown dropright">
                             <button v-if="convEvalMap.has(conv.id)"
                                     class="view-evaluations btn btn-secondary dropdown-toggle"
