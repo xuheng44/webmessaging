@@ -89,6 +89,7 @@
                         <p v-if="conv.endTime" class="card-text mb-2 text-muted">
                             End: &nbsp {{moment(conv.endTime).format('MMM Do YYYY, h:mm:ss A')}}
                         </p>
+                        <p> MediaType:  {{conv.participants[0].attributes.MediaType}} </p>
                         <p> FirsName:  {{conv.participants[0].attributes.FirstName}} </p>
                         <p> LastName:  {{conv.participants[0].attributes.LastName}} </p>
                         <p> PhoneNumber:  {{conv.participants[0].attributes.PhoneNumber}} </p>
