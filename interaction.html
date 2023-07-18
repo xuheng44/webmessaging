@@ -272,6 +272,7 @@
                                 setHidden(conversationsTable, false);
                                 reloadButtonEl.disabled = false;
                             }).catch(function (reason) {
+                                console.log("Query function errors!")
                                 setHidden(reloadingEl, true);
                                 setErrorState('Failed to fetch your conversations');
                                 reloadButtonEl.disabled = false;
@@ -441,7 +442,7 @@
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
  
-                    console.log("321 conversationid is: " + qconversationId);
+                    console.log("123 conversationid is: " + qconversationId);
                     return new platformClient.ConversationApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
