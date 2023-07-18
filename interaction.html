@@ -254,6 +254,15 @@
                                     reloadButtonEl.disabled = false;
                                     return;
                                 }
+                                let currClickListener = function () {
+                                        if (canViewInteraction) {
+                                            clientApp.conversations.showInteractionDetails(conversations.conversationId);
+                                        } else {
+                                            // Note: Normally, we wouldn't show a user an action they can't perform;
+                                            // however, this is a dev tool and missing permissions is valuable information to convey
+                                            setErrorState('You do not have the proper permissions to view interactions.');
+                                        }
+                                    }                                
                                 conversationsTableBody.appendChild(buildTrFromConversation(conversations, canViewWrapUpCodes, currClickListener));
 
                                 setHidden(conversationsTable, false);
@@ -423,7 +432,7 @@
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
  
-                    console.log("456 conversationid is: " + qconversationId);
+                    console.log("123 conversationid is: " + qconversationId);
                     return new platformClient.ConversationsApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
