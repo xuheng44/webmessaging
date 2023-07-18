@@ -20,7 +20,7 @@
             crossorigin="anonymous">
         <script src="https://sdk-cdn.mypurecloud.com/javascript/170.0.0/purecloud-platform-client-v2.min.js"></script>
         <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
-        <script src="oauth.js"></script>
+        <script src="oauth1.js"></script>
 
         <style>
             body {
@@ -108,7 +108,7 @@
         </section>
 
         <section class="interactions-example hidden">
-            <h2>Recent Interactions</h2>
+            <h2>Current Interactions</h2>
             <div class="header">
                 <div>
                     <h4 class="user-name">Name:</h4>
@@ -161,6 +161,7 @@
                 let platformClient = window.require('platformClient');
                 let client = platformClient.ApiClient.instance;
                 let clientApp = null;
+                let qconversationId = queryParameters.conversationId;
                 try {
                     if (queryParameters.gcHostOrigin && queryParameters.gcTargetEnv) {
                         clientApp = new window.purecloud.apps.ClientApp({
@@ -198,9 +199,9 @@
                 setHidden(authenticatingEl, false);
 
                 let authenticated = false;
-                let userDataAcquired = false;
-                let canViewInteraction = false;
-                let canViewWrapUpCodes = false;
+                let userDataAcquired = true;
+                let canViewInteraction = true;
+                let canViewWrapUpCodes = true;
 
                 authenticate(client, pcEnvironment, state)
                     .then(() => {
@@ -212,19 +213,7 @@
 
                         // Check if the current user will be able to view interaction details
                         let permissions = profileData.authorization.permissions;
-                        if (checkPermission(permissions, 'analytics:conversationDetail:view') &&
-                            checkPermission(permissions, 'analytics:conversationAggregate:view') &&
-                            (checkPermission(permissions, 'conversation:communication:view') ||
-                             checkPermission(permissions, 'quality:evaluation:add') ||
-                             checkPermission(permissions, 'quality:calibration:view') ||
-                             checkPermission(permissions, 'quality:evaluation:editScore'))) {
-                            canViewInteraction = true;
-                        }
-
-                        if (checkPermission(permissions, 'routing:wrapupCode:view')) {
-                            canViewWrapUpCodes = true;
-                        }
-
+ 
                         let interactionExampleEl = document.querySelector('section.interactions-example');
                         let interactionsHeaderEl = document.querySelector('section.interactions-example .header');
                         let reloadButtonEl = document.querySelector('button.reload-interactions');
@@ -449,6 +438,7 @@
 
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
+                 /* hidden by sky   
                     let intervalEnd = new Date();
                     let intervalStart = (new Date(new Date().setDate(intervalEnd.getDate() - numDays)));
 
@@ -474,8 +464,9 @@
                             }
                         ]
                     };
+                 hidden by sky */
 
-                    return new platformClient.AnalyticsApi().postAnalyticsConversationsDetailsQuery(query)
+                    return new platformClient.conversationApi.getconverstion(qconversationId)
                         .then(function (results) {
                             if (!results || !results.conversations) {
                                 // No conversations is returned as an empty object; return an empty array
