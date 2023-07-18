@@ -247,19 +247,24 @@
 
                             getUserConversationHistory(profileData.id, 30, canViewWrapUpCodes).then(function (conversations) {
                                 setHidden(reloadingEl, true);
-                                console.log("query finished")
+                                
                                 if (conversations.length === 0) {
                                     setErrorState('No conversations were found for you in the past 30 days');
                                     console.log("no conversation found!")
                                     reloadButtonEl.disabled = false;
                                     return;
                                 }
+                                console.log("query finished")
+
                                 let currClickListener = function () {
                                         if (canViewInteraction) {
                                             clientApp.conversations.showInteractionDetails(conversations.conversationId);
+                                            console.log("conversation ID:")
+                                            console.log(conversations.conversationId);
                                         } else {
                                             // Note: Normally, we wouldn't show a user an action they can't perform;
                                             // however, this is a dev tool and missing permissions is valuable information to convey
+                                            console.log("No permissions to view")
                                             setErrorState('You do not have the proper permissions to view interactions.');
                                         }
                                     }                                
@@ -432,7 +437,7 @@
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
  
-                    console.log("123 conversationid is: " + qconversationId);
+                    console.log("456 conversationid is: " + qconversationId);
                     return new platformClient.ConversationsApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
