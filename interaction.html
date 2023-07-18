@@ -202,7 +202,7 @@
                 let authenticated = false;
                 let userDataAcquired = true;
                 let canViewInteraction = true;
-                let canViewWrapUpCodes = true;
+                let canViewWrapUpCodes = false;
 
                 authenticate(client, pcEnvironment, state)
                     .then(() => {
@@ -247,9 +247,10 @@
 
                             getUserConversationHistory(profileData.id, 30, canViewWrapUpCodes).then(function (conversations) {
                                 setHidden(reloadingEl, true);
-
+                                console.log("query finished")
                                 if (conversations.length === 0) {
                                     setErrorState('No conversations were found for you in the past 30 days');
+                                    console.log("no conversation found!")
                                     reloadButtonEl.disabled = false;
                                     return;
                                 }
