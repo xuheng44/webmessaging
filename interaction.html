@@ -161,7 +161,7 @@
                 let platformClient = window.require('platformClient');
                 let client = platformClient.ApiClient.instance;
                 let clientApp = null;
-                let qconversationId = queryParameters.conversationId;
+                const qconversationId = queryParameters.conversationId;
                 try {
                     if (queryParameters.gcHostOrigin && queryParameters.gcTargetEnv) {
                         clientApp = new window.purecloud.apps.ClientApp({
