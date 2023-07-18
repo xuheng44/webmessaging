@@ -248,12 +248,6 @@
                             getUserConversationHistory(profileData.id, 30, canViewWrapUpCodes).then(function (conversations) {
                                 setHidden(reloadingEl, true);
                                 
-                                if (conversations.length === 0) {
-                                    setErrorState('No conversations were found for you in the past 30 days');
-                                    console.log("no conversation found!")
-                                    reloadButtonEl.disabled = false;
-                                    return;
-                                }
                                 console.log("query finished")
 
                                 let currClickListener = function () {
