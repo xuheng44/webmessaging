@@ -361,7 +361,7 @@
                     let cellMediaType = row.insertCell();
                     cellMediaType.classList.add('media-type');
                     let cellWrapUp = row.insertCell();
-
+                    console.log("Enter Build Conversation table!")
                     // Mark row as active if applicable
                     if (!conversation.hasOwnProperty('conversationEnd')) {
                         row.classList.add('in-progress');
@@ -409,12 +409,6 @@
                             }
                     }
 
-                    // Wrap-up Cell
-                    let wrapUpSeg = getMostRecentWrapUpSegment(conversation);
-                    if (wrapUpSeg && wrapUpSeg._custom_wrapUp) {
-                        cellWrapUp.appendChild(document.createTextNode(wrapUpSeg._custom_wrapUp.name));
-                    }
-
                     // Add Listener to row if specified
                     if (clickListener) {
                         row.addEventListener('click', clickListener);
@@ -429,7 +423,7 @@
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
  
-                    console.log("123 conversationid is: " + qconversationId);
+                    console.log("456 conversationid is: " + qconversationId);
                     return new platformClient.ConversationsApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
