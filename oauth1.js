@@ -93,9 +93,9 @@ function getQueryParameters() {
     return result;
 }
 
-function computeState({ gcHostOrigin, gcTargetEnv, pcEnvironment }) {
+function computeState({ gcHostOrigin, gcTargetEnv, pcEnvironment,conversationId }) {
     if (gcHostOrigin && gcTargetEnv) {
-        return `gcHostOrigin=${gcHostOrigin}&gcTargetEnv=${gcTargetEnv}`;
+        return `gcHostOrigin=${gcHostOrigin}&gcTargetEnv=${gcTargetEnv}&conversationId=${conversationId}`;
     } else {
         return `pcEnvironment=${pcEnvironment}`;
     }
