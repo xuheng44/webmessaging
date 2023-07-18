@@ -466,8 +466,8 @@
                         ]
                     };
                  hidden by sky */
-                    console.log("123 conversationid is: " + qconversationId);
-                    return new platformClient.ConversationApi.getConversation(qconversationId)
+                    console.log("456 conversationid is: " + qconversationId);
+                    return new platformClient.ConversationApi().getConversation(qconversationId)
                         .then(function (results) {
                             console.log(`getConversation success! data: ${JSON.stringify(result, null, 2)}`);
                             if (!results || !results.conversations) {
