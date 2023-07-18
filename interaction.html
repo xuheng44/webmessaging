@@ -468,76 +468,14 @@
                  hidden by sky */
                     console.log("456 conversationid is: " + qconversationId);
                     return new platformClient.ConversationApi().getConversation(qconversationId)
-                        .then(function (results) {
+                        .then((result) => {
                             console.log(`getConversation success! data: ${JSON.stringify(result, null, 2)}`);
-                            if (!results || !results.conversations) {
-                                // No conversations is returned as an empty object; return an empty array
-                                return [];
-                            }
-
-                            if (!expandWrapup) {
-                                return results.conversations;
-                            } else {
-                                let outstandingWrapupPromises = [];
-                                // Map of wrapUpCodes to segments that need to be updated when the wrap-up text returns
-                                let wrapUpToSegments = {};
-
-                                // Find and Issue requests for any unknown wrapup code details and return with promises as necessary
-                                // Note: Some duplicate requests here, but not terrible for a demo
-                                results.conversations.forEach(function (conversation, index) {
-                                    let latestWrapUp = getMostRecentWrapUpSegment(conversation);
-
-                                    if (latestWrapUp && latestWrapUp.wrapUpCode) {
-                                        let wrapUpCode = latestWrapUp.wrapUpCode;
-
-                                        let knownDetails = wrapUpCodeDetailsMap[wrapUpCode];
-                                        if (knownDetails) {
-                                            // We've previously fetched this wrap-up; insert it now
-                                            latestWrapUp._custom_wrapUp = knownDetails;
-                                        } else {
-                                            // Unknown wrap-up code; need to fetch it
-                                            let segmentsToUpdate = wrapUpToSegments[wrapUpCode];
-
-                                            if (segmentsToUpdate) {
-                                                // Additional segment for outstanding wrapup xhr request; add to list
-                                                segmentsToUpdate.push(latestWrapUp);
-                                            } else {
-                                                // First request for this wrap-up code
-                                                wrapUpToSegments[wrapUpCode] = [latestWrapUp];
-                                                outstandingWrapupPromises.push(
-                                                    new platformClient.RoutingApi().getRoutingWrapupcode(wrapUpCode)
-                                                        .then(function (wrapUpDetails) {
-                                                            // Persist for future use
-                                                            wrapUpCodeDetailsMap[wrapUpCode] = wrapUpDetails;
-                                                            // Update all associated segments
-                                                            wrapUpToSegments[wrapUpCode].forEach(function (currSegment) {
-                                                                currSegment._custom_wrapUp = wrapUpDetails;
-                                                            });
-                                                        })
-                                                        .catch(function (err) {
-                                                            console.error('Failed to look up wrapUpCode', err);
-                                                            // Update all associated segments
-                                                            wrapUpToSegments[wrapUpCode].forEach(function (currSegment) {
-                                                                currSegment._custom_wrapUp = null;
-                                                            });
-                                                        })
-                                                );
-                                            }
-                                        }
-                                    }
-                                });
-
-                                if (outstandingWrapupPromises.length === 0) {
-                                    return results.conversations;
-                                } else {
-                                    // Wait for all the outstanding wrap-up code fetches, then resolve with the convos
-                                    return Promise.all(outstandingWrapupPromises).then(function () {
-                                        return results.conversations;
-                                    });
-                                }
-                            }
                         }
-                    );
+                    )
+                    .catch((err) => {
+                        console.log('There was a failure calling getConversation');
+                        console.error(err);
+                    });
                 }
 
                 function getMostRecentParticipant(conversation, participantPurpose) {
