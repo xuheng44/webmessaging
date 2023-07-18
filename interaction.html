@@ -465,7 +465,7 @@
                         ]
                     };
                  hidden by sky */
-
+                    console.log('conversationID is: ${qconversationId}');
                     return new platformClient.conversationApi.getconverstion(qconversationId)
                         .then(function (results) {
                             if (!results || !results.conversations) {
