@@ -439,37 +439,11 @@
 
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
-                 /* hidden by sky   
-                    let intervalEnd = new Date();
-                    let intervalStart = (new Date(new Date().setDate(intervalEnd.getDate() - numDays)));
-
-                    let query = {
-                        "interval": intervalStart.toISOString() + "/" + intervalEnd.toISOString(),
-                        "order": "desc",
-                        "orderBy": "conversationStart",
-                        "paging": {
-                            "pageSize": 25,
-                            "pageNumber": 1
-                        },
-                        "segmentFilters": [
-                            {
-                                "type": "and",
-                                "predicates": [
-                                    {
-                                        "type": "dimension",
-                                        "dimension": "userId",
-                                        "operator": "matches",
-                                        "value": userId
-                                    }
-                                ]
-                            }
-                        ]
-                    };
-                 hidden by sky */
+ 
                     console.log("321 conversationid is: " + qconversationId);
                     return new platformClient.ConversationApi().getConversation(qconversationId)
                         .then((data) => {
-                            console.log(`getConversation success! data: ${JSON.stringify(data, null, 2)}`);
+                            console.log(`getConversation success! data`);
                         }
                     )
                     .catch((err) => {
