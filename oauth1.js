@@ -75,6 +75,7 @@ function getQueryParameters() {
         result.gcHostOrigin = queryParams.gcHostOrigin;
         result.gcTargetEnv = queryParams.gcTargetEnv;
         result.pcEnvironment = queryParams.pcEnvironment;
+        result.conversationId = queryParams.conversationId;
       }
     }
     const queryParams = extractParams(window.location.search.substring(1));
