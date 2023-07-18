@@ -442,8 +442,8 @@
                 // Get user's convo history over specified range; optionally expanding wrapup
                 function getUserConversationHistory(userId, numDays, expandWrapup) {
  
-                    console.log("123 conversationid is: " + qconversationId);
-                    return new platformClient.ConversationApi().getConversation(qconversationId)
+                    console.log("321 conversationid is: " + qconversationId);
+                    return new platformClient.ConversationsApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
                         }
