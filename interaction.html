@@ -369,7 +369,7 @@
                     let cellCustomerName = row.insertCell();
                     let cellMediaType = row.insertCell();
                     cellMediaType.classList.add('media-type');
-                    let cellWrapUp = row.insertCell();
+                   // let cellWrapUp = row.insertCell();
                     // Mark row as active if applicable
                     if (!conversation.hasOwnProperty('endTime')) {
                         row.classList.add('in-progress');
@@ -405,8 +405,7 @@
                         mediaType = "cobrowse";
                     } 
 
-                    console.log(latestCustomer.messages.length);
-
+            
                     switch (mediaType) {
                         case 'email':
                             cellMediaType.classList.add('fa', 'fa-envelope');
