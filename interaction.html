@@ -380,9 +380,11 @@
 
                     // Customer Cell
                     let latestCustomer = getMostRecentParticipant(conversation, 'customer');
-                    if (latestCustomer && latestCustomer.participantName) {
-                        cellCustomerName.appendChild(document.createTextNode(latestCustomer.participantName));
+                    if (latestCustomer && latestCustomer.attributes.name) {
+                        cellCustomerName.appendChild(document.createTextNode(latestCustomer.attributes.name));
                     }
+                    console.log("lastCustomer.attributes.name");
+                    console.log(lastCustomer.attributes.name);
 
                     // MediaType Cell
                     let mediaType;
