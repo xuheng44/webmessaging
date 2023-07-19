@@ -248,7 +248,7 @@
                             getUserConversationHistory(profileData.id, 30, canViewWrapUpCodes).then(function (conversations) {
                                 setHidden(reloadingEl, true);
                                 
-                                console.log("query finished")
+                                console.log("Clicker Listen start!")
 
                                 let currClickListener = function () {
                                         if (canViewInteraction) {
@@ -261,8 +261,10 @@
                                             console.log("No permissions to view")
                                             setErrorState('You do not have the proper permissions to view interactions.');
                                         }
-                                    }                                
+                                    }    
+                                console.log("Clicker Listen middle!")                            
                                 conversationsTableBody.appendChild(buildTrFromConversation(conversations, canViewWrapUpCodes, currClickListener));
+                                console.log("Clicker Listen finished!")
 
                                 setHidden(conversationsTable, false);
                                 reloadButtonEl.disabled = false;
