@@ -248,10 +248,6 @@
                             getUserConversationHistory(profileData.id, 30, canViewWrapUpCodes).then(function (conversations) {
                                 setHidden(reloadingEl, true);
                                 
-                                console.log("Clicker Listen start!");
-                                console.log("conversation ID:");
-                                console.log(conversations.id);
-
                                 let currClickListener = function () {
                                         if (canViewInteraction) {
                                             clientApp.conversations.showInteractionDetails(conversations.id);
@@ -263,9 +259,9 @@
                                             setErrorState('You do not have the proper permissions to view interactions.');
                                         }
                                     }    
-                                console.log("Clicker Listen middle!")                            
+                    
                                 conversationsTableBody.appendChild(buildTrFromConversation(conversations, canViewWrapUpCodes, currClickListener));
-                                console.log("Clicker Listen finished!")
+
 
                                 setHidden(conversationsTable, false);
                                 reloadButtonEl.disabled = false;
@@ -365,8 +361,8 @@
                 function buildTrFromConversation(conversation, includeWrapUpDetails, clickListener) {
                     let row = document.createElement('tr');
                     console.log("Enter Build Conversation table1");
-                    console.log(conversation.conversationId);
-                    var conversationId = conversation.conversationId;
+                    console.log(conversation.id);
+                    var conversationId = conversation.id;
                     console.log("Enter Build Conversation table2");
                     let cellConversationId = row.insertCell();
                     cellConversationId.classList.add('conversation-id');
@@ -375,7 +371,7 @@
                     cellMediaType.classList.add('media-type');
                     let cellWrapUp = row.insertCell();
                     // Mark row as active if applicable
-                    if (!conversation.hasOwnProperty('conversationEnd')) {
+                    if (!conversation.hasOwnProperty('endTime')) {
                         row.classList.add('in-progress');
                     }
 
@@ -439,8 +435,6 @@
                     return new platformClient.ConversationsApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
-                            console.log("conversation ID:");
-                            console.log(data.id);
                             return data;
                         }
                     )
