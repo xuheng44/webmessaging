@@ -384,7 +384,7 @@
                         cellCustomerName.appendChild(document.createTextNode(latestCustomer.attributes.name));
                     }
                     console.log("lastCustomer.attributes.name");
-                    console.log(lastCustomer.attributes.name);
+                  //  console.log(lastCustomer.attributes.name);
 
                     // MediaType Cell
                     let mediaType;
@@ -457,6 +457,7 @@
                         let currParticipant = conversation.participants[index];
                         if (currParticipant.purpose === participantPurpose) {
                             result = currParticipant;
+                            console.log(result.attributes.name);
                         }
                     }
 
