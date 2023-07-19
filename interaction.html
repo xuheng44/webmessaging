@@ -248,13 +248,14 @@
                             getUserConversationHistory(profileData.id, 30, canViewWrapUpCodes).then(function (conversations) {
                                 setHidden(reloadingEl, true);
                                 
-                                console.log("Clicker Listen start!")
+                                console.log("Clicker Listen start!");
+                                console.log("conversation ID:");
+                                console.log(conversations.id);
 
                                 let currClickListener = function () {
                                         if (canViewInteraction) {
                                             clientApp.conversations.showInteractionDetails(conversations.id);
-                                            console.log("conversation ID:")
-                                            console.log(conversations.id);
+ 
                                         } else {
                                             // Note: Normally, we wouldn't show a user an action they can't perform;
                                             // however, this is a dev tool and missing permissions is valuable information to convey
