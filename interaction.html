@@ -393,15 +393,15 @@
                     //    mediaType = latestAcd.sessions[0].mediaType;
                     //}
                     console.log("media type start");
-                    if (latestCustomer.calls){
+                    if (latestCustomer.calls.length > 0){
                         mediaType = "voice";
-                    } else if (latestCustomer.emails) {
+                    } else if (latestCustomer.emails.length > 0) {
                         mediaType = "email";
-                    } else if (latestCustomer.callbacks) {
+                    } else if (latestCustomer.callbacks.length > 0) {
                         mediatype = "callback";
-                    } else if (latestCustomer.chats || latestCustomer.messages) {
+                    } else if (latestCustomer.chats.length > 0 || latestCustomer.messages.length > 0) {
                         mediatype = "chat";
-                    } else if (latestCustomer.cobrowsesessions || latestCustomer.screenshares) {
+                    } else if (latestCustomer.cobrowsesessions.length > 0 || latestCustomer.screenshares.length > 0) {
                         mediatype = "cobrowse";
                     } 
 
