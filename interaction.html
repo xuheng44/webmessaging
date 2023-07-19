@@ -363,9 +363,10 @@
 
                 function buildTrFromConversation(conversation, includeWrapUpDetails, clickListener) {
                     let row = document.createElement('tr');
-                    console.log("Enter Build Conversation table!")
-
+                    console.log("Enter Build Conversation table1");
+                    console.log(conversation.conversationId);
                     var conversationId = conversation.conversationId;
+                    console.log("Enter Build Conversation table2");
                     let cellConversationId = row.insertCell();
                     cellConversationId.classList.add('conversation-id');
                     let cellCustomerName = row.insertCell();
