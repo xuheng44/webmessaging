@@ -398,14 +398,14 @@
                     } else if (latestCustomer.emails.length > 0) {
                         mediaType = "email";
                     } else if (latestCustomer.callbacks.length > 0) {
-                        mediatype = "callback";
+                        mediaType = "callback";
                     } else if (latestCustomer.chats.length > 0 || latestCustomer.messages.length > 0) {
-                        mediatype = "chat";
+                        mediaType = "chat";
                     } else if (latestCustomer.cobrowsesessions.length > 0 || latestCustomer.screenshares.length > 0) {
-                        mediatype = "cobrowse";
+                        mediaType = "cobrowse";
                     } 
 
-                    console.log(mediaType);
+                    console.log(latestCustomer.messages.length);
 
                     switch (mediaType) {
                         case 'email':
