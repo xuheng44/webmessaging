@@ -363,6 +363,7 @@
 
                 function buildTrFromConversation(conversation, includeWrapUpDetails, clickListener) {
                     let row = document.createElement('tr');
+                    console.log("Enter Build Conversation table!")
 
                     var conversationId = conversation.conversationId;
                     let cellConversationId = row.insertCell();
@@ -371,7 +372,6 @@
                     let cellMediaType = row.insertCell();
                     cellMediaType.classList.add('media-type');
                     let cellWrapUp = row.insertCell();
-                    console.log("Enter Build Conversation table!")
                     // Mark row as active if applicable
                     if (!conversation.hasOwnProperty('conversationEnd')) {
                         row.classList.add('in-progress');
