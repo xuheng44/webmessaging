@@ -439,6 +439,8 @@
                     return new platformClient.ConversationsApi().getConversation(qconversationId)
                         .then((data) => {
                             console.log(`getConversation success! data`);
+                            console.log("conversation ID:");
+                            console.log(data.id);
                         }
                     )
                     .catch((err) => {
