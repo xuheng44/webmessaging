@@ -382,6 +382,8 @@
                     let latestCustomer = getMostRecentParticipant(conversation, 'customer');
                     if (latestCustomer && latestCustomer.attributes.name) {
                         cellCustomerName.appendChild(document.createTextNode(latestCustomer.attributes.name));
+                    } else if (latestCustomer && latestCustomer.name) {
+                        cellCustomerName.appendChild(document.createTextNode(latestCustomer.name));
                     }
                   // console.log("lastCustomer.attributes.name");
                   //  console.log(lastCustomer.attributes.name);
@@ -433,7 +435,10 @@
                     }
 
                     //Add Attribute colume
-                    cellAttributes.appendChild(document.createTextNode(latestCustomer.attributes.case));
+                    if (latestCustomer.attributes.case) {
+                        cellAttributes.appendChild(document.createTextNode(latestCustomer.attributes.case));
+                    }
+                    
 
                     // Add Listener to row if specified
                     if (clickListener) {
