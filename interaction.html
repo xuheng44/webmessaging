@@ -252,9 +252,9 @@
 
                                 let currClickListener = function () {
                                         if (canViewInteraction) {
-                                            clientApp.conversations.showInteractionDetails(conversations.conversationId);
+                                            clientApp.conversations.showInteractionDetails(conversations.id);
                                             console.log("conversation ID:")
-                                            console.log(conversations.conversationId);
+                                            console.log(conversations.id);
                                         } else {
                                             // Note: Normally, we wouldn't show a user an action they can't perform;
                                             // however, this is a dev tool and missing permissions is valuable information to convey
