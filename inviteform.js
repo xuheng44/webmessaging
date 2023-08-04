@@ -1,7 +1,7 @@
 'use strict'
 
 //Variables to change in your deployment
-const deploymentId = 'b9c07add-2ac6-45f5-8be8-bf608e215f3f' //Your WebMessenger DeploymentId 171a5200-a8e9-4fe6-8289-966ae6be547d
+const deploymentId = 'd2194ac0-7847-4f8f-85cf-0a372de80c8c' //Your WebMessenger DeploymentId 171a5200-a8e9-4fe6-8289-966ae6be547d
 const hexColor = '#7985E3' //Color theme
 
 function toggleMessenger() {
