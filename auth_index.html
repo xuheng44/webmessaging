@@ -63,7 +63,8 @@
 			}
 
 			if (sRedirectURL && sRedirectURL.indexOf('?code') !== -1) { /**split the redirect url from the authorized okta response and pass it to the getAuthcode command */
-				bAlreadyAuthorized = true;
+				console.log("Autenticated")
+                bAlreadyAuthorized = true;
 				const aPath = sRedirectURL.split('?code');
 
 				sRedirectURL = aPath && aPath.length && aPath[0];
@@ -100,8 +101,9 @@
 					});
                 }    
             }
-
-            brandlogin();
+            if (!!bAuthenticated) {
+                brandlogin();
+            }
 
             Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
 				// COMMANDS
