@@ -101,6 +101,8 @@
                 }    
             }
 
+            brandlogin();
+
             Genesys('registerPlugin', 'AuthProvider', (AuthProvider) => {
 				// COMMANDS
 
@@ -154,7 +156,7 @@
 
 				//	hideProgress();
 					// 'message' here is provided by our API and its always expected to be in string. Any security scan results are false postive in this case.
-					console.log("Auth Error", message);
+					console.log("Auth Error 1", message);
 					// LocalStorage usage is must for this product
 				//	localStorage.setItem('authFetching', false); // eslint-disable-line
 				});
@@ -162,7 +164,7 @@
 				AuthProvider.subscribe('Auth.authError', (error) => {
 				//	hideProgress();
 					// 'message' here is provided by our API and its always expected to be in string. Any security scan results are false postive in this case.
-					console.log("Auth Error", error);
+					console.log("Auth Error 2", error);
 					// LocalStorage usage is must for this product
 				//	clearStorage();
 				});
