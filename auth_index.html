@@ -81,7 +81,8 @@
             const aScopes = ['openid', 'email', 'profile'];
 
             function  brandlogin(){
-
+                console.log("Enter Authenticate Procedure");
+                
                 if (!bAuthenticated) {
                     const oktaConfig = {// eslint-disable-line
 						redirectUri: `${sRedirectURL}`,
