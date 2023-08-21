@@ -21,6 +21,7 @@
 		var sDeploymentId = '03028e8a-d0e8-4e68-b079-774768f09a63';
 		var sEnvironment = 'prod-apne2';
         if (Genesys) {
+            console.log("Enter Phase1");
             let bAuthenticated = false,
 				bAlreadyAuthorized = false,
 				authClient = '',
@@ -69,6 +70,7 @@
 			}
 
 			if(sOktaurl && sRedirectURL){ /**Initialize the okta auth client with the config options */
+                console.log("Enter Phase2");
 				authClient = new OktaAuth({
 					issuer: `${sOktaurl}`,
 					redirectUri: `${sRedirectURL}`,
@@ -82,7 +84,7 @@
 
             function  brandlogin(){
                 console.log("Enter Authenticate Procedure");
-                
+
                 if (!bAuthenticated) {
                     const oktaConfig = {// eslint-disable-line
 						redirectUri: `${sRedirectURL}`,
